@@ -164,9 +164,9 @@ layui.define(['laytpl', 'form'], function(exports){
     othis.html(that.elem);
     
     //各级容器
-    that.layBox = that.elem.find('.'+ ELEM_BOX)
-    that.layHeader = that.elem.find('.'+ ELEM_HEADER)
-    that.laySearch = that.elem.find('.'+ ELEM_SEARCH)
+    that.layBox = that.elem.find('.'+ ELEM_BOX);
+    that.layHeader = that.elem.find('.'+ ELEM_HEADER);
+    that.laySearch = that.elem.find('.'+ ELEM_SEARCH);
     that.layData = thisElem.find('.'+ ELEM_DATA);
     that.layBtn = thisElem.find('.'+ ELEM_ACTIVE + ' .layui-btn');
     
@@ -214,7 +214,7 @@ layui.define(['laytpl', 'form'], function(exports){
     that.layData.eq(1).html(arr[1].views.join(''));
     
     that.renderCheckBtn();
-  }
+  };
   
   //渲染表单
   Class.prototype.renderForm = function(type){
@@ -252,7 +252,7 @@ layui.define(['laytpl', 'form'], function(exports){
       
       //无数据视图
       if(!obj.stopNone){
-        var isNone = thisDataElem.children('li:not(.'+ HIDE +')').length
+        var isNone = thisDataElem.children('li:not(.'+ HIDE +')').length;
         that.noneView(thisDataElem, isNone ? '' : options.text.none);
       }
     });
@@ -295,14 +295,14 @@ layui.define(['laytpl', 'form'], function(exports){
         ? options.parseData(item) 
       : item) || item;
       
-      newData.push(item = $.extend({}, item))
+      newData.push(item = $.extend({}, item));
       
       layui.each(options.value, function(index2, item2){
         if(item2 == item.value){
           item.selected = true;
         }
       });
-      callback && callback(item);
+      //callback && callback(item);
     });
    
    let arr1=newData.filter(function(item){
@@ -317,7 +317,9 @@ layui.define(['laytpl', 'form'], function(exports){
 	   });
    });
    newData=arr2.concat(arr1);
-   
+   newData.forEach(function(item){
+	   callback && callback(item);
+   });
     options.data = newData;
     return that;
   };
@@ -398,7 +400,7 @@ layui.define(['laytpl', 'form'], function(exports){
       that.renderCheckBtn();
       
       //穿梭时，如果另外一个框正在搜索，则触发匹配
-      var siblingInput = thisBoxElem.siblings('.'+ ELEM_BOX).find('.'+ ELEM_SEARCH +' input')
+      var siblingInput = thisBoxElem.siblings('.'+ ELEM_BOX).find('.'+ ELEM_SEARCH +' input');
       siblingInput.val() === '' ||  siblingInput.trigger('keyup');
       
       //穿梭时的回调
