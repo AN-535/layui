@@ -305,6 +305,19 @@ layui.define(['laytpl', 'form'], function(exports){
       callback && callback(item);
     });
    
+   let arr1=newData.filter(function(item){
+	   return !item.selected;
+   });
+   let arr2=[];
+   layui.each(options.value,function(index,item){
+	   layui.each(newData,function(index2,item2){
+		   if(item==item2.value){
+			   arr2.push(item2);
+		   }
+	   });
+   });
+   newData=arr2.concat(arr1);
+   
     options.data = newData;
     return that;
   };
